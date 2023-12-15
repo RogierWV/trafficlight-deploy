@@ -1,0 +1,6 @@
+[submodule "trafficlight-controller"]
+	path = trafficlight-controller
+	url = https://github.com/RogierWV/trafficlight-controller.git
+[submodule "trafficlight-client"]
+	path = trafficlight-client
+	url = https://github.com/RogierWV/trafficlight-client.git

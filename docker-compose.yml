@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./trafficlight-controller
+    ports: 
+      - 3000:3000
+    restart: always
+  
+  frontend:
+    build: ./trafficlight-client
+    ports:
+      - 4200:4200
+    restart: always
+    volumes:
+      - ./trafficlight-client:/app:Z
+    command: "ng serve --host frontend --public-host localhost"
+  
+  gateway:
+    image: caddy:alpine
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:Z
+    restart: always
+    ports:
+      - 80:80
+      - 2019:2019
